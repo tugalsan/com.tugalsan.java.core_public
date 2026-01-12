@@ -1,0 +1,37 @@
+package com.tugalsan.java.core.network.server;
+
+import java.util.*;
+
+public record TS_NetworkIPs(
+        Optional<String> ip_localHost_loopBack,
+        Optional<String> ip_broadCast,
+        List<String> ip_multiCast,
+        List<String> ip_localNetwork,
+        List<String> ip_other) {
+
+    public boolean ip_other_contains(String ipTarget) {
+        return ip_other.stream().anyMatch(ipSource -> Objects.equals(ipSource, ipTarget));
+    }
+
+    public boolean ip_localNetwork_contains(String ipTarget) {
+        return ip_localNetwork.stream().anyMatch(ipSource -> Objects.equals(ipSource, ipTarget));
+    }
+
+    public boolean ip_multiCast_contains(String ipTarget) {
+        return ip_multiCast.stream().anyMatch(ipSource -> Objects.equals(ipSource, ipTarget));
+    }
+
+    public boolean ip_broadCast_contains(String ipTarget) {
+        if (ip_broadCast.isEmpty()) {
+            return false;
+        }
+        return Objects.equals(ip_broadCast.orElseThrow(), ipTarget);
+    }
+
+    public boolean ip_localHost_loopBack_contains(String ipTarget) {
+        if (ip_localHost_loopBack.isEmpty()) {
+            return false;
+        }
+        return Objects.equals(ip_localHost_loopBack.orElseThrow(), ipTarget);
+    }
+}

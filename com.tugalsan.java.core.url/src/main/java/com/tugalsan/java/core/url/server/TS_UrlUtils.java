@@ -1,0 +1,164 @@
+package com.tugalsan.java.core.url.server;
+
+import module com.tugalsan.java.core.file;
+import module com.tugalsan.java.core.function;
+import module com.tugalsan.java.core.log;
+import module com.tugalsan.java.core.string;
+import module com.tugalsan.java.core.thread;
+import module com.tugalsan.java.core.union;
+import module com.tugalsan.java.core.url;
+import module javax.servlet.api;
+import java.io.*;
+import java.net.*;
+import java.nio.file.*;
+import java.util.Arrays;
+
+public class TS_UrlUtils {
+
+    final private static TS_Log d = TS_Log.of(TS_UrlUtils.class);
+
+    public static TGS_UnionExcuse<String> mime(TGS_Url urlFile) {
+        {
+            var typeByFileNameMap = TGS_FuncMTCUtils.call(() -> {
+                var type = URLConnection.getFileNameMap().getContentTypeFor(TGS_UrlUtils.getFileNameFull(urlFile)).replace(";charset=UTF-8", "");
+                return TGS_StringUtils.cmn().isPresent(type) && type.length() < 5 ? type : null;
+            }, e -> null);
+            if (typeByFileNameMap != null) {
+                return TGS_UnionExcuse.of(typeByFileNameMap);
+            }
+        }
+        {
+            var typeByURLConnection = TGS_FuncMTCUtils.call(() -> {
+                var url = new URI(urlFile.url.toString()).toURL();
+                return url.openConnection().getContentType().replace(";charset=UTF-8", "");
+            }, e -> null);
+            if (typeByURLConnection != null) {
+                return TGS_UnionExcuse.of(typeByURLConnection);
+            }
+        }
+        {
+            var typeByAddon = MIME_ADDONS.stream().map(addon -> addon.caller.call(urlFile)).filter(type -> type != null).findAny().orElse(null);
+            if (typeByAddon != null) {
+                return TGS_UnionExcuse.of(typeByAddon);
+            }
+        }
+        return TGS_UnionExcuse.ofExcuse(d.className(), "mime", "Cannot detect type for " + urlFile);
+    }
+
+    private static String mime_with_param(TGS_Url urlFile, String paramName) {
+        var param = TGS_UrlParser.of(urlFile).quary.params.stream()
+                .filter(p -> p.name.toString().equals(paramName))
+                .findAny().orElse(null);
+        if (param == null) {
+            return null;
+        }
+        return URLConnection.getFileNameMap().getContentTypeFor(TGS_UrlQueryUtils.param64UrlSafe_2_readable(param.valueSafe));
+    }
+
+    public static void mime_addon_with_params(String... paramNames) {
+        Arrays.asList(paramNames).forEach(paramName -> {
+            if (MIME_ADDONS.stream().noneMatch(ma -> ma.name().equals(paramName))) {
+                MIME_ADDONS.add(new MimeAddon(paramName, urlFile -> mime_with_param(urlFile, paramName)));
+            }
+        });
+    }
+
+    private record MimeAddon(String name, TGS_FuncMTU_OutTyped_In1<String, TGS_Url> caller) {
+
+    }
+    final private static TS_ThreadSyncLst<MimeAddon> MIME_ADDONS = TS_ThreadSyncLst.ofSlowWrite();
+
+    public static TGS_Url toUrl(HttpServletRequest rq) {
+        var protocol = rq.getScheme();             // http
+        var hostName = rq.getServerName();     // hostname.com
+        var hostPort = rq.getServerPort();        // 80
+        var appPath = rq.getContextPath();   // /mywebapp
+        var subPath = rq.getServletPath();   // /servlet/MyServlet
+        var pathInfo = rq.getPathInfo();         // /a/b;c=123
+        var queryString = rq.getQueryString();          // d=789
+        var url = new StringBuilder();
+        url.append(protocol).append("://").append(hostName);
+        if (hostPort != 80 && hostPort != 443) {
+            url.append(":").append(hostPort);
+        }
+        url.append(appPath).append(subPath);
+        if (pathInfo != null) {
+            url.append(pathInfo);
+        }
+        if (queryString != null) {
+            url.append("?").append(queryString);
+        }
+        return TGS_Url.of(url.toString());
+    }
+
+    public boolean isReachable(TGS_Url urlo, Integer optionalTimeOut) {
+        var url = TGS_FuncMTCUtils.call(() -> URI.create(urlo.toString()).toURL(), e -> null);
+        if (url == null) {
+            return false;
+        }
+        HttpURLConnection con = null;
+        try {
+            con = (HttpURLConnection) url.openConnection();
+            if (optionalTimeOut != null) {
+                con.setConnectTimeout(optionalTimeOut);
+                con.setReadTimeout(optionalTimeOut);
+            }
+            con.setRequestMethod("HEAD");
+            var responseCode = con.getResponseCode();
+            return (200 <= responseCode && responseCode <= 399);
+        } catch (IOException e) {
+            return false;//I KNOW
+        } finally {
+            if (con != null) {
+                con.disconnect();
+            }
+        }
+    }
+
+    public Long getLengthInBytes(TGS_Url urlo) {
+        var url = TGS_FuncMTCUtils.call(() -> URI.create(urlo.toString()).toURL(), e -> null);
+        if (url == null) {
+            return null;
+        }
+        HttpURLConnection conn = null;
+        try {
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("HEAD");
+            var l = conn.getContentLengthLong();
+            conn.disconnect();
+            return l;
+        } catch (IOException e) {
+            return null;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+    }
+
+    public InputStream newInputStream(TGS_Url url) {
+        return TGS_FuncMTCUtils.call(() -> URI.create(url.toString()).toURL().openConnection().getInputStream());
+    }
+
+    public OutputStream newOutputStream(TGS_Url url) {
+        return TGS_FuncMTCUtils.call(() -> URI.create(url.toString()).toURL().openConnection().getOutputStream());
+    }
+
+    public static TGS_UnionExcuse<TGS_Url> toUrl(Path file) {
+        return TGS_FuncMTCUtils.call(() -> {
+            var url = TGS_Url.of(file.toUri().toURL().toExternalForm());
+            return TGS_UnionExcuse.of(url);
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    public static TGS_UnionExcuse<Path> toPath(TGS_Url url) {
+        return TS_PathUtils.toPath(url.toString());
+    }
+
+    public static boolean isUrl(CharSequence str) {
+        return TGS_FuncMTCUtils.call(() -> {
+            URI.create(str.toString()).toURL();
+            return true;
+        }, e -> false);
+    }
+}

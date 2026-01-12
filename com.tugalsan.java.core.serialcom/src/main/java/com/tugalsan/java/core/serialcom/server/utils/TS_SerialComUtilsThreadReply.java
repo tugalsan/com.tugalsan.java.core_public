@@ -1,0 +1,94 @@
+package com.tugalsan.java.core.serialcom.server.utils;
+
+import module com.tugalsan.java.core.log;
+import module com.tugalsan.java.core.thread;
+import module com.tugalsan.java.core.function;
+import module com.fazecast.jSerialComm;
+import java.time.*;
+
+public class TS_SerialComUtilsThreadReply implements TGS_FuncMTU {
+
+    final private static TS_Log d = TS_Log.of(TS_SerialComUtilsThreadReply.class);
+
+    final public TS_ThreadSyncTrigger killTrigger_wt;
+    final private SerialPort serialPort;
+    final private TGS_FuncMTU_In1<String> onReply;
+
+    private TS_SerialComUtilsThreadReply(TS_ThreadSyncTrigger killTrigger, SerialPort serialPort, TGS_FuncMTU_In1<String> onReply) {
+        this.killTrigger_wt = TS_ThreadSyncTrigger.of(d.className(), killTrigger);
+        this.serialPort = serialPort;
+        this.onReply = onReply;
+    }
+
+    public static TS_SerialComUtilsThreadReply of(TS_ThreadSyncTrigger killTrigger, SerialPort serialPort, TGS_FuncMTU_In1<String> onReply) {
+        return new TS_SerialComUtilsThreadReply(killTrigger, serialPort, onReply);
+    }
+
+    private void waitForNewData() {
+        var dur = Duration.ofMillis(20);
+        while (serialPort.bytesAvailable() == 0 || serialPort.bytesAvailable() == -1) {
+            if (killTrigger_wt.hasTriggered()) {
+                return;
+            }
+            TS_ThreadSyncWait.of(d.className(), killTrigger_wt, dur);
+        }
+    }
+
+    private void appendToBuffer() {
+        if (killTrigger_wt.hasTriggered()) {
+            return;
+        }
+        var bytes = new byte[serialPort.bytesAvailable()];
+        var length = serialPort.readBytes(bytes, bytes.length);
+        if (length == -1) {
+            return;
+        }
+        var string = new String(bytes);
+        if (string.isEmpty()) {
+            return;
+        }
+        buffer.append(string);
+    }
+
+    private void processBuffer() {
+        if (killTrigger_wt.hasTriggered()) {
+            return;
+        }
+        //IS THERE ANY CMD?
+        var idx = buffer.indexOf("\n");
+        if (idx == -1) {
+            return;
+        }
+        //PROCESS FIRST CMD
+        var firstCommand = buffer.substring(0, idx).replace("\r", "");
+        onReply.run(firstCommand);
+        //REMOVE FIRST CMD FROM BUFFER
+        var leftOver = buffer.length() == idx + 1
+                ? ""
+                : buffer.substring(idx + 1, buffer.length());
+        buffer.setLength(0);
+        buffer.append(leftOver);
+        //PROCESS LEFT OVER CMDS
+        processBuffer();
+    }
+
+    private void handleError(Exception e) {
+        TGS_FuncUtils.throwIfInterruptedException(e);
+        if (killTrigger_wt.hasTriggered()) {
+            return;
+        }
+//        e.printStackTrace();
+    }
+
+    @Override
+    public void run() {
+        while (!killTrigger_wt.hasNotTriggered()) {
+            TGS_FuncMTCUtils.run(() -> {
+                waitForNewData();
+                appendToBuffer();
+                processBuffer();
+            }, e -> handleError(e));
+        }
+    }
+    final private StringBuilder buffer = new StringBuilder();
+}

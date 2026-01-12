@@ -1,0 +1,34 @@
+package com.tugalsan.java.core.tomcat.server;
+
+import module com.tugalsan.java.core.cast;
+import module com.tugalsan.java.core.log;
+import module javax.servlet.api;
+import java.util.Arrays;
+
+public class TS_TomcatInfoUtils {
+
+    final private static TS_Log d = TS_Log.of(TS_TomcatInfoUtils.class);
+
+    public static boolean isTOMCAT() {
+        var r = Arrays.stream(new Throwable().getStackTrace())
+                .anyMatch(s -> s.getClassName().equals("org.apache.catalina.core.StandardEngineValve"));
+        d.ci("isTOMCAT", r);
+        return r;
+    }
+
+    public static int version(ServletContext ctx) {
+        var info = ctx.getServerInfo();
+        var versionDetailed = info.substring("Apache Tomcat/".length());
+        var idx = versionDetailed.indexOf(".");
+        if (idx == -1) {
+            return -1;
+        }
+        var versionSimple = versionDetailed.substring(0, idx);
+        var versionSimpleInt = TGS_CastUtils.toInteger(versionSimple).orElse(null);
+        if (versionSimpleInt == null) {
+            return -1;
+        }
+        d.ci("version", versionSimpleInt);
+        return versionSimpleInt;
+    }
+}

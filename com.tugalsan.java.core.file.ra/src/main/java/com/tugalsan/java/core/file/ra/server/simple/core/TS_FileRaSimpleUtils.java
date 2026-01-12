@@ -1,0 +1,68 @@
+package com.tugalsan.java.core.file.ra.server.simple.core;
+
+import module com.tugalsan.java.core.bytes;
+import module com.tugalsan.java.core.log;
+import module com.tugalsan.java.core.union;
+import module com.tugalsan.java.core.function;
+import java.io.*;
+
+public class TS_FileRaSimpleUtils {
+
+    private TS_FileRaSimpleUtils() {
+
+    }
+
+    final private static TS_Log d = TS_Log.of(TS_FileRaSimpleUtils.class);
+
+    public static RandomAccessFile create(File file) throws FileNotFoundException {
+        return new RandomAccessFile(file, "rw");
+    }
+
+    public static TGS_UnionExcuse<Double> getDoubleFromPostion(RandomAccessFile raf, long position) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            return TGS_UnionExcuse.of(raf.readDouble());
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    public static TGS_UnionExcuse<Long> setDoubleFromPostion_calcNextPosition(RandomAccessFile raf, long position, double value) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            raf.writeDouble(value);
+            return TGS_UnionExcuse.of(position + TGS_ByteLengthUtils.typeDouble());
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    public static TGS_UnionExcuse<Long> getLongFromPostion(RandomAccessFile raf, long position) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            return TGS_UnionExcuse.of(raf.readLong());
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    public static TGS_UnionExcuse<Long> setLongFromPostion_calcNextPosition(RandomAccessFile raf, long position, long value) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            raf.writeLong(value);
+            return TGS_UnionExcuse.of(position + TGS_ByteLengthUtils.typeLong());
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    public static TGS_UnionExcuse<String> getStringFromPostion(RandomAccessFile raf, long position) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            var op = TGS_UnionExcuse.of(raf.readUTF());
+            d.ci("getStringFromPostion", "op", op);
+            return op;
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+
+    @Deprecated //WARNING: CHECK BYTE SIZE
+    public static TGS_UnionExcuse<Long> setStringFromPostion_calcNextPosition(RandomAccessFile raf, long position, String value) {
+        return TGS_FuncMTCUtils.call(() -> {
+            raf.seek(position);
+            raf.writeUTF(value);
+            return TGS_UnionExcuse.of(position + TGS_ByteLengthUtils.typeStringUTF8(value));
+        }, e -> TGS_UnionExcuse.ofExcuse(e));
+    }
+}

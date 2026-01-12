@@ -1,0 +1,36 @@
+package com.tugalsan.java.core.servlet.gwt.requestfactory.server;
+
+import module com.tugalsan.java.core.function;
+import module com.tugalsan.java.core.thread;
+import module com.tugalsan.java.core.os;
+import module com.tugalsan.java.core.servlet.gwt.requestfactory;
+import module javax.servlet.api;
+import java.util.concurrent.Semaphore;
+
+abstract public class TS_SGWTExecutor implements TGS_FuncMTU_In4<TS_ThreadSyncTrigger, HttpServletRequest, TGS_SGWTFuncBase, Object> {
+
+    abstract public String name();
+
+    public int timeout_seconds() {
+        return 60;
+    }
+
+    public TS_SGWTExecutor(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
+    final public Semaphore semaphore;
+
+    public TS_SGWTExecutor() {
+        this(new Semaphore(TS_OsCpuUtils.getProcessorCount() - 1));
+    }
+
+    abstract public TS_SGWTValidationResult validate(TS_ThreadSyncTrigger servletKillTrigger, HttpServletRequest request, TGS_SGWTFuncBase funcBase);
+
+    public static void ifValidExecute(TS_ThreadSyncTrigger servletKillTrigger, TS_SGWTExecutor executor, HttpServletRequest rq, TGS_SGWTFuncBase funcBase) {
+        var pack = executor.validate(servletKillTrigger, rq, funcBase);
+        if (!pack.result()) {
+            return;
+        }
+        executor.run(servletKillTrigger, rq, funcBase, pack.data());
+    }
+}

@@ -1,0 +1,24 @@
+module com.tugalsan.java.core.jetty.embedded {
+    requires com.tugalsan.java.core.function;
+    requires jakarta.servlet;
+    requires org.eclipse.jetty.annotations;
+    requires org.eclipse.jetty.server;
+    requires org.eclipse.jetty.servlets;
+    requires org.eclipse.jetty.compression;
+    requires org.eclipse.jetty.compression.gzip;
+    requires org.eclipse.jetty.websocket.core.client;
+    requires org.eclipse.jetty.websocket.core.common;
+    requires org.eclipse.jetty.websocket.jetty.api;
+    requires org.eclipse.jetty.websocket.jetty.client;
+    requires org.eclipse.jetty.websocket.jetty.common;
+    requires org.eclipse.jetty.http;
+    requires org.eclipse.jetty.http2.client;
+    requires org.eclipse.jetty.http2.server;
+    requires org.eclipse.jetty.http3.qpack;
+    requires org.eclipse.jetty.http3.common;
+    requires org.eclipse.jetty.http3.client;
+    requires org.eclipse.jetty.http3.server;
+    requires org.eclipse.jetty.alpn.client;
+    requires org.eclipse.jetty.alpn.server;
+    exports com.tugalsan.java.core.jetty.embedded.server;
+}

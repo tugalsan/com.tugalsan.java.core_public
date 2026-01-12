@@ -1,0 +1,14 @@
+package com.tugalsan.java.core.servlet.url.client;
+
+public class TGS_SURLUtils {
+
+    final public static String LOC_NAME = "u"; //TS_SURLWebServlet needs it static
+
+    public static String PARAM_SERVLET_NAME() {
+        return "n";
+    }
+
+    public static String PARAM_SERVLET_NAME_ALIAS0() {
+        return "servletName";
+    }
+}

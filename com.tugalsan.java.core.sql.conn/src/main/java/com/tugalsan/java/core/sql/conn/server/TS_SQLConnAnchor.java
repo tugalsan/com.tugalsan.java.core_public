@@ -1,0 +1,135 @@
+package com.tugalsan.java.core.sql.conn.server;
+
+import module com.tugalsan.java.core.file.json;
+import module com.tugalsan.java.core.file;
+import module com.tugalsan.java.core.file.txt;
+import module com.tugalsan.java.core.function;
+import module com.tugalsan.java.core.log;
+import module com.tugalsan.java.core.thread;
+import module com.tugalsan.java.core.os;
+import module com.tugalsan.java.core.union;
+import module java.sql;
+import com.tugalsan.java.core.sql.conn.server.core.*;
+import java.nio.charset.*;
+import java.nio.file.*;
+import java.util.*;
+import java.util.concurrent.atomic.*;
+import java.util.function.*;
+
+public class TS_SQLConnAnchor {
+
+    final private static TS_Log d = TS_Log.of(TS_SQLConnAnchor.class);
+
+    private TS_SQLConnAnchor(TS_SQLConnConfig config) {
+        this.config = config;
+    }
+    final public TS_SQLConnConfig config;
+
+    public void use(TGS_FuncMTU_In1<Connection> con) {
+        var count = use_counter.getAndIncrement();
+        if (use_sema.get().halfFull()) {
+            d.ci("use", count, "triggered", "used", use_sema.get().usedPermits(), "available", use_sema.get().availablePermits(), "max", use_sema.get().maxPermits());
+        }
+        TS_ThreadSyncRateLimitedRun.of(use_sema.get()).run(() -> {
+            if (use_sema.get().halfFull()) {
+                d.ci("use", count, "begin....", "used", use_sema.get().usedPermits(), "available", use_sema.get().availablePermits(), "max", use_sema.get().maxPermits());
+            }
+            try (var conPack = TS_SQLConnCoreNewConnection.of(TS_SQLConnAnchor.this).value()) {
+                con.run(conPack.con());
+            }
+            if (use_sema.get().halfFull()) {
+                d.ci("use", count, "end......", "used", use_sema.get().usedPermits(), "available", use_sema.get().availablePermits(), "max", use_sema.get().maxPermits());
+            }
+        });
+        if (use_sema.get().halfFull()) {
+            d.ci("use", count, "finalized", "used", use_sema.get().usedPermits(), "available", use_sema.get().availablePermits(), "max", use_sema.get().maxPermits());
+        }
+    }
+    public static volatile Supplier<TS_ThreadSyncSemaphore> use_sema = StableValue.supplier(() -> new TS_ThreadSyncSemaphore(TS_OsCpuUtils.getProcessorCount() - 1));
+    final static AtomicLong use_counter = new AtomicLong();
+
+    public static TS_SQLConnAnchor of(TS_SQLConnConfig config) {
+        return new TS_SQLConnAnchor(config);
+    }
+
+    public static TGS_UnionExcuse<TS_SQLConnAnchor> of(Path dir, CharSequence dbName) {
+        TS_DirectoryUtils.assureExists(dir);
+        var filePath = dir.resolve(TS_SQLConnConfig.class.getSimpleName() + "_" + dbName + ".json");
+        d.cr("createAnchor", filePath);
+
+        if (!TS_FileUtils.isExistFile(filePath)) {
+            TS_DirectoryUtils.createDirectoriesIfNotExists(filePath.getParent());
+            var tmp = TS_SQLConnConfig.of(dbName);
+            var jsonString = TS_FileJsonUtils.toJSON(tmp, true);
+            TS_FileJsonUtils.toFile(jsonString, filePath, false, true);
+        }
+
+        var jsonString = TGS_FuncMTCUtils.call(() -> TS_FileTxtUtils.toString(filePath), e -> {
+            d.ct("createAnchor", e);
+            d.cr("createAnchor", "writing default file");
+            var tmp = TS_SQLConnConfig.of(dbName);
+            var jsonString0 = TS_FileJsonUtils.toJSON(tmp, true);
+            TS_FileTxtUtils.toFile(jsonString0, filePath, false);
+            return jsonString0;
+        });
+        //d.ci("createAnchor", jsonString);
+
+        var u_config = TS_FileJsonUtils.toObject(jsonString, TS_SQLConnConfig.class);
+        if (u_config.isExcuse()) {
+            return TGS_UnionExcuse.ofExcuse(u_config.excuse());
+        }
+        return TGS_UnionExcuse.of(TS_SQLConnAnchor.of(u_config.value()));
+    }
+
+    public TS_SQLConnAnchor cloneItAs(CharSequence newDbName) {
+        return new TS_SQLConnAnchor(config.cloneItAs(newDbName));
+    }
+
+    @Override
+    public int hashCode() {
+        var hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.config);
+        hash = 97 * hash + Objects.hashCode(this.url);
+        hash = 97 * hash + Objects.hashCode(this.prop);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof TS_SQLConnAnchor)) {
+            return false;
+        }
+        var o = (TS_SQLConnAnchor) obj;
+        return o.config.equals(this.config);
+    }
+
+    public String url() {
+        return url.orElseSet(() -> TS_SQLConnCoreURLUtils.create(config));
+    }
+    private volatile StableValue<String> url = StableValue.of();
+
+    public Properties properties() {
+        return prop.orElseSet(() -> {
+            var newProp = new Properties();
+            if (config.charsetUTF8) {
+                newProp.put("charSet", StandardCharsets.UTF_8.name());
+            }
+            if (config.dbUser == null || config.dbUser.equals("") || config.dbPassword == null) {
+            } else {
+                newProp.put("user", config.dbUser);
+                newProp.put("password", config.dbPassword);
+            }
+            return newProp;
+        });
+    }
+    private volatile StableValue<Properties> prop = StableValue.of();
+
+    @Override
+    public String toString() {
+        return TS_SQLConnAnchor.class.getSimpleName() + "{" + "config=" + config + ", url=" + url.orElse("null") + ", prop=" + prop.orElse(new Properties()) + '}';
+    }
+
+    public String tagSelectAndSpace() {
+        return "SELECT ";
+    }
+}

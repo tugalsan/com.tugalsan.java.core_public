@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="org.joml.JOML"/>
+    <inherits name="com.shc.webgl4j.client"/>
+    <inherits name="org.treblereel.gwt.Three4G"/>
+</module>

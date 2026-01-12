@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 
+           Deploy: mvn clean deploy (includes javadoc)
+           Package: mvn clean package assembly:single
+       Release: mvn release:clean
+                mvn release:prepare
+                mvn release:perform
+    -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent> 
+        <groupId>com.tugalsan.java</groupId>
+        <artifactId>com.tugalsan.java.core.parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>      
+    <artifactId>com.tugalsan.java.core.file.pdf.pdfbox3.pdf2dom</artifactId>
+    <version>2.0.4-SNAPSHOT</version>
+    <!-- <name>Pdf2Dom</name> -->
+    <description>Pdf2Dom is a PDF parser that converts the documents to a HTML DOM representation. The obtained DOM tree may be then serialized to a HTML file or further processed. The inline CSS definitions contained in the resulting document are used for making the HTML page as similar as possible to the PDF input. A command-line utility for converting the PDF documents to HTML is included in the distribution package. Pdf2Dom may be also used as an independent Java library with a standard DOM interface for your DOM-based applications or as an alternative parser for the CSSBox rendering engine in order to add the PDF processing capability to CSSBox.</description>
+    <url>http://cssbox.sourceforge.net/pdf2dom</url>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Radek Burget</name>
+            <roles>
+                <role>Main developer &amp; project leader</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/radkovo/Pdf2Dom</url>
+        <connection>scm:git:git@github.com:radkovo/Pdf2Dom.git</connection>
+        <developerConnection>scm:git:git@github.com:radkovo/Pdf2Dom.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>net.sf.cssbox.pdf2dom</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>/src/main/assembly/dist.xml</descriptor>
+                    </descriptors>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.fit.pdfdom.PDFToHTML</mainClass>
+                        </manifest>
+                    </archive>
+                    <finalName>PDFToHTML</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.file.pdf.pdfbox3.pdf2dom.gfxassert</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.file.pdf.pdfbox3.pdf2dom.fontverter</artifactId>
+            <version>1.2.22</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.function</artifactId>
+             <version>1.0-SNAPSHOT</version><!-- not project . version -->
+        </dependency>
+    </dependencies>
+</project>
