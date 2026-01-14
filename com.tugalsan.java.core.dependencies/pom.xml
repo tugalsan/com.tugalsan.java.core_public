@@ -824,6 +824,7 @@
                         <includes> 
                             <include>**/*.class</include> 
                             <include>**/*.java</include> 
+                            <include>**/*.gwt.xml</include> 
                         </includes> 
                     </configuration> 
                 </plugin>
