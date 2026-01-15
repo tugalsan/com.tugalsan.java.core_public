@@ -696,12 +696,13 @@
                 <artifactId>gwt-crypto</artifactId> 
                 <version>2.3.0</version> 
             </dependency>
+            <!-- app only -->
             <dependency>
                 <groupId>org.gwtproject</groupId>
                 <artifactId>gwt</artifactId>
                 <version>2.12.2</version>
-                <!--<type>pom</type>
-                <scope>import</scope>-->
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.gwtproject</groupId>
