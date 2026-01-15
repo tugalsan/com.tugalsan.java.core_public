@@ -5,8 +5,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <dependencyManagement>
-        <!-- com.tugalsan.java.spi.* -->
         <dependencies>  
+            <dependency>
+                <groupId>org.netbeans.external</groupId>
+                <artifactId>AbsoluteLayout</artifactId>
+                <version>RELEASE280</version>
+            </dependency>
+            <!-- com.tugalsan.java.spi.* -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -668,6 +673,12 @@
                 <artifactId>jaxb-api</artifactId>
                 <version>2.4.0-b180830.0359</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>2.3.1</version>
+                <!--<scope>runtime</scope>-->
+            </dependency>
             <!-- com.tugalsan.java.api.email -->
             <!--<dependency>
                 <groupId>org.simplejavamail</groupId>
@@ -817,6 +828,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>3.8.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
