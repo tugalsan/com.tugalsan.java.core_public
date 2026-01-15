@@ -698,6 +698,13 @@
             </dependency>
             <dependency>
                 <groupId>org.gwtproject</groupId>
+                <artifactId>gwt</artifactId>
+                <version>2.12.2</version>
+                <!--<type>pom</type>
+                <scope>import</scope>-->
+            </dependency>
+            <dependency>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt-user</artifactId>
                 <version>2.12.2</version>
                 <!--<scope>provided</scope>-->
@@ -752,9 +759,21 @@
                         <compilerArgs>
                             <arg>--enable-preview</arg>
                             <arg>-Xlint:deprecation</arg>
+                            <arg>--add-modules</arg>
+                            <arg>jdk.incubator.vector</arg>
                         </compilerArgs>
                     </configuration>
-                </plugin>
+                </plugin>    
+                <plugin>
+                    <groupId>net.ltgt.gwt.maven</groupId>
+                    <artifactId>gwt-maven-plugin</artifactId>
+                    <version>1.2.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <sourceLevel>auto</sourceLevel>
+                        <failOnError>true</failOnError>
+                    </configuration>
+                </plugin>            
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
@@ -831,7 +850,4 @@
             </plugins>
         </pluginManagement>        
     </build>
-    
-  
-    
 </project>  
