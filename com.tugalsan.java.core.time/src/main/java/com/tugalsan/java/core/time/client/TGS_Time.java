@@ -817,7 +817,7 @@ public class TGS_Time implements Serializable {
         date -= (long) m;
         date /= 100L;
         var y = (int) date;
-        return TGS_StringUtils.cmn().concat(TGS_StringIntegerUtils.make2Chars(d), ".", TGS_StringIntegerUtils.make2Chars(m), "." + TGS_StringIntegerUtils.make4Chars(y));
+        return TGS_StringUtils.cmn().concat(TGS_StringIntegerUtils.make2Chars(d), ".", TGS_StringIntegerUtils.make2Chars(m), "." + TGS_StringIntegerUtils.makeMin4Chars(y));
     }
 
     public static String toString_timeOnly_now() {
