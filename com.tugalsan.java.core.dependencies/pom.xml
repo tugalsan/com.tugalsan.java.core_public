@@ -432,22 +432,12 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>1.22.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi</artifactId>
-                <version>5.4.1</version><!-- working 4.1.2-->
-            </dependency>
+            </dependency>            
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.21.0</version> <!-- poi version 5 needs it, becuase servlet-upload and gwt messes up -->
             </dependency>
-            <!-- <dependency><!- - FIX FOR: org.openxmlformats.schemas.wordprocessingml.x2006.main.STPageOrientation.LANDSCAPE/PORTRAIT in word- ->
-                <groupId>org.apache.poi</groupId>
-                <artifactId>ooxml-schemas</artifactId>
-                <version>1.4</version>
-            </dependency>-->
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>pdfbox</artifactId>
@@ -627,27 +617,26 @@
                 <version>1.15.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.docx -->
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <!-- <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.poi</groupId>
-                        <artifactId>poi-ooxml-schemas</artifactId>
-                    </exclusion>
-                </exclusions> -->
-                <version>5.4.1</version><!-- same with poi-->
-            </dependency>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-scratchpad</artifactId>
-                <version>5.4.1</version><!-- same with poi-->
-            </dependency>
             <!-- <dependency><!- - FIX FOR: org.openxmlformats.schemas.wordprocessingml.x2006.main.STPageOrientation.LANDSCAPE/PORTRAIT in word- ->
                 <groupId>org.apache.poi</groupId>
                 <artifactId>ooxml-schemas</artifactId>
                 <version>1.4</version>
             </dependency>-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>5.5.1</version><!-- working 5.4.1--><!-- TODO UPDATE -->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>5.5.1</version><!-- same with poi--><!-- TODO UPDATE -->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>5.5.1</version><!-- same with poi--><!-- TODO UPDATE -->
+            </dependency>
             <!-- com.tugalsan.java.api.file -->
             <dependency><!-- FOR CHECKSUM -->
                 <groupId>javax.xml.bind</groupId>
