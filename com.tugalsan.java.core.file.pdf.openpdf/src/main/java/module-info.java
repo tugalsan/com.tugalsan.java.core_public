@@ -4,6 +4,7 @@ module com.tugalsan.java.core.file.pdf.openpdf {
     requires flying.saucer;
     requires flying.saucer.pdf;
     requires org.apache.commons.io;
+    requires com.github.librepdf.pdfFontsExtra;
     requires com.github.librepdf.openpdf;
     requires com.tugalsan.java.core.url;
     requires com.tugalsan.java.core.file.common;

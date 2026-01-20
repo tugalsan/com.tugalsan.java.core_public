@@ -6,12 +6,12 @@ import module com.tugalsan.java.core.charset;
 import module com.tugalsan.java.core.file;
 import module com.tugalsan.java.core.log;
 import module com.tugalsan.java.core.function;
-import com.lowagie.text.Document;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Image;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.Rectangle;
+import org.openpdf.text.Document;
+import org.openpdf.text.Element;
+import org.openpdf.text.Font;
+import org.openpdf.text.Image;
+import org.openpdf.text.PageSize;
+import org.openpdf.text.Rectangle;
 import java.nio.file.*;
 import java.util.stream.*;
 

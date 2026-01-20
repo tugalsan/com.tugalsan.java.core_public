@@ -45,7 +45,7 @@ public class TS_FilePdfOpenPdfUtilsSign {
             var reader = new PdfReader(baos.toByteArray());
             // A verified signature would require a private key plus a valid certificate. see the JavaDoc of this
             // method for details
-            var stp = PdfStamper.createSignature(reader, baos, '\0', null, true);
+            var stp = PdfStamper.createSignature(reader, baos, null, null, true);
 
             var signDate = Calendar.getInstance();
             stp.setEnforcedModificationDate(signDate);

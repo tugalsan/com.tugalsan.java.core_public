@@ -22,44 +22,44 @@
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
-                <version>11.0.10</version><!-- 10.1.18 WOKS. TODO 10.1.2 java.lang.ClassNotFoundException: org.apache.tomcat.jakarta ee.EE Spec Profile -->
+                <version>11.0.15</version><!-- 10.1.18 WOKS. TODO 10.1.2 java.lang.ClassNotFoundException: org.apache.tomcat.jakarta ee.EE Spec Profile -->
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-jasper</artifactId>
-                <version>11.0.10</version>
+                <version>11.0.15</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jasper</artifactId>
-                <version>11.0.10</version>
+                <version>11.0.15</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jasper-el</artifactId>
-                <version>11.0.10</version>
+                <version>11.0.15</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jsp-api</artifactId>
-                <version>11.0.10</version>
+                <version>11.0.15</version>
             </dependency>
             <!-- com.tugalsan.java.api.time -->
             <dependency>
                 <groupId>net.java.dev.jna</groupId>
                 <artifactId>jna-platform</artifactId>
-                <version>5.17.0</version>
+                <version>5.18.1</version>
             </dependency>
             <!-- com.tugalsan.java.api.sql.conn -->
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jdbc</artifactId>
-                <version>11.0.10</version>
+                <version>11.0.15</version>
             </dependency>
             <dependency>
                 <groupId>org.mariadb.jdbc</groupId>
                 <artifactId>mariadb-java-client</artifactId>
-                <version>3.5.6</version>
+                <version>3.5.7</version>
                 <scope>provided</scope>
             </dependency>
             <!-- com.tugalsan.java.api.servlet.upload -->
@@ -84,19 +84,19 @@
             <dependency>
                 <groupId>com.fazecast</groupId>
                 <artifactId>jSerialComm</artifactId>
-                <version>2.11.0</version>
+                <version>2.11.4</version>
             </dependency>
             <!-- com.tugalsan.java.api.profile -->
             <dependency>
                 <groupId>net.bull.javamelody</groupId>
                 <artifactId>javamelody-core</artifactId>
-                <version>1.99.3</version>
+                <version>1.99.4</version>
             </dependency>
             <!-- com.tugalsan.java.api.os -->
             <dependency>
                 <groupId>com.github.oshi</groupId>
                 <artifactId>oshi-core</artifactId>
-                <version>6.8.2</version>
+                <version>6.9.2</version>
             </dependency>
             <!-- com.tugalsan.java.api.ocr.opencv -->
             <dependency>
@@ -108,7 +108,7 @@
             <dependency>
                 <groupId>net.sourceforge.tess4j</groupId>
                 <artifactId>tess4j</artifactId>
-                <version>5.16.0</version>
+                <version>5.17.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.math -->
             <dependency>
@@ -131,7 +131,7 @@
             <dependency>
                 <groupId>org.eclipse.jgit</groupId>
                 <artifactId>org.eclipse.jgit</artifactId>
-                <version>7.3.0.202506031305-r</version>
+                <version>7.5.0.202512021534-r</version>
             </dependency>
             <!-- com.tugalsan.java.api.jetty.embedded -->
             <dependency>
@@ -143,42 +143,42 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-annotations</artifactId>
-                <version>11.0.8</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-server</artifactId>
-                <version>11.0.19</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-servlets</artifactId>
-                <version>11.0.16</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http2</groupId>
                 <artifactId>http2-server</artifactId>
-                <version>11.0.16</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http3</groupId>
                 <artifactId>http3-server</artifactId>
-                <version>11.0.13</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-alpn-server</artifactId>
-                <version>11.0.16</version>
+                <version>12.0.31</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-client</artifactId>
-                <version>11.0.16</version>
+                <version>12.0.31</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http2</groupId>
                 <artifactId>http2-client</artifactId>
-                <version>11.0.13</version>
+                <version>11.0.26</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http3</groupId>
@@ -193,12 +193,7 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-util</artifactId>
-                <version>11.0.19</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>com.tugalsan.java.api.function</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>11.0.26</version>
             </dependency>
             <!-- com.tugalsan.java.api.gui.visualization -->
             <dependency>
@@ -206,26 +201,7 @@
                 <artifactId>gwt-visualization</artifactId>
                 <version>1.0.2</version>
             </dependency>
-            <!-- com.tugalsan.java.api.gui.gl -->
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>com.tugalsan.java.api.math</artifactId>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.gwt</groupId>
-                        <artifactId>gwt-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.google.gwt</groupId>
-                        <artifactId>gwt-user</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.google.jsinterop</groupId>
-                        <artifactId>base</artifactId>                
-                    </exclusion>
-                </exclusions>
-                <version>${project.version}</version>
-            </dependency>
+            <!-- com.tugalsan.java.api.gui.gl -->           
             <dependency>
                 <groupId>org.treblereel.gwt</groupId>
                 <artifactId>three4g-extensions</artifactId>
@@ -354,13 +330,13 @@
                         <artifactId>gwt-core</artifactId>
                     </exclusion>
                 </exclusions>
-                <version>1.0.3</version>
+                <version>1.1.1</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.ftp -->
             <dependency>
                 <groupId>commons-net</groupId>
                 <artifactId>commons-net</artifactId>
-                <version>3.11.1</version>
+                <version>3.12.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.zip7 -->
             <dependency>
@@ -371,7 +347,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-compress</artifactId>
-                <version>1.27.1</version>
+                <version>1.28.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.yaml -->
             <dependency>
@@ -389,7 +365,7 @@
             <dependency>
                 <groupId>de.rototor.pdfbox</groupId>
                 <artifactId>graphics2d</artifactId>
-                <version>3.0.3</version><!-- it was 0.34 -->
+                <version>3.0.5</version><!-- it was 0.34 -> 3.0.3 -->
             </dependency>
             <!-- com.tugalsan.java.api.file.pdf.pdfbox3.pdf2dom.gfxassert -->
             <dependency>
@@ -406,7 +382,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.17.0</version>
+                <version>3.20.0</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -445,17 +421,17 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>                
-                <version>2.1.0-alpha1</version>
+                <version>2.0.17</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>                
-                <version>1.14.0</version>
+                <version>1.14.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
-                <version>1.20.1</version>
+                <version>1.22.1</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
@@ -465,7 +441,7 @@
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.19.0</version> <!-- poi version 5 needs it, becuase servlet-upload and gwt messes up -->
+                <version>2.21.0</version> <!-- poi version 5 needs it, becuase servlet-upload and gwt messes up -->
             </dependency>
             <!-- <dependency><!- - FIX FOR: org.openxmlformats.schemas.wordprocessingml.x2006.main.STPageOrientation.LANDSCAPE/PORTRAIT in word- ->
                 <groupId>org.apache.poi</groupId>
@@ -475,12 +451,12 @@
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>pdfbox</artifactId>
-                <version>3.0.5</version>
+                <version>3.0.6</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>pdfbox-examples</artifactId>
-                <version>3.0.5</version>
+                <version>3.0.6</version>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
@@ -505,49 +481,54 @@
             <dependency>
                 <groupId>com.twelvemonkeys.imageio</groupId>
                 <artifactId>imageio-jpeg</artifactId>
-                <version>3.12.0</version>
+                <version>3.13.0</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk18on</artifactId>
-                <version>1.81</version>
+                <version>1.83</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcmail-jdk18on</artifactId>
-                <version>1.81</version>
+                <version>1.83</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcpkix-jdk18on</artifactId>
-                <version>1.81</version>
+                <version>1.83</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.xml.bind</groupId>
                 <artifactId>jakarta.xml.bind-api</artifactId>
-                <version>4.0.2</version>
+                <version>4.0.4</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.activation</groupId>
                 <artifactId>jakarta.activation-api</artifactId>
-                <version>2.1.3</version>
+                <version>2.1.4</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>pdfbox-tools</artifactId>
-                <version>3.0.5</version><!-- should be same with pdfbox-->
+                <version>3.0.6</version><!-- should be same with pdfbox-->
             </dependency>
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>xmpbox</artifactId>
-                <version>3.0.5</version><!-- should be same with pdfbox-->
+                <version>3.0.6</version><!-- should be same with pdfbox-->
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId><!-- org.apache.pdfbox wants it! he Log4j 2 to SLF4J Adapter allows applications coded to the Log4j 2 API to be routed to SLF4J.-->
                 <artifactId>log4j-to-slf4j</artifactId>
-                <version>2.24.3</version>
+                <version>2.25.3</version>
             </dependency> 
             <!-- com.tugalsan.java.api.file.pdf.openpdf -->
+            <dependency>
+                <groupId>com.github.librepdf</groupId>
+                <artifactId>openpdf-fonts-extra</artifactId>
+                <version>3.0.0</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.librepdf</groupId>
                 <artifactId>openpdf</artifactId>
@@ -557,12 +538,12 @@
                         <artifactId>commons-io</artifactId>
                     </exclusion>
                 </exclusions>
-                <version>2.2.2</version>
+                <version>3.0.0</version><!--2.2.2-->
             </dependency>
             <dependency>
                 <groupId>org.xhtmlrenderer</groupId>
                 <artifactId>flying-saucer-pdf</artifactId>
-                <version>9.12.1</version>
+                <version>10.0.6</version><!--9.13.3-->
             </dependency>
             <!-- com.tugalsan.java.api.file.libreoffice -->
             <dependency>
@@ -599,34 +580,34 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <version>2.19.1</version>
+                <version>2.20.1</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
-                <version>2.19.1</version>
+                <version>2.20</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.19.1</version>
+                <version>2.20.1</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.img.code -->
             <dependency>
                 <groupId>com.google.zxing</groupId>
                 <artifactId>core</artifactId>
-                <version>3.5.3</version>
+                <version>3.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.google.zxing</groupId>
                 <artifactId>javase</artifactId>
-                <version>3.5.3</version>
+                <version>3.5.4</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.img -->
             <dependency>
                 <groupId>net.coobird</groupId>
                 <artifactId>thumbnailator</artifactId>
-                <version>0.4.20</version>
+                <version>0.4.21</version>
             </dependency>
             <dependency>
                 <groupId>com.tianscar.imageio</groupId>
@@ -637,13 +618,13 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
-                <version>4.33.0</version>
+                <version>4.39.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.html -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
-                <version>1.13.1</version>
+                <version>1.15.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.docx -->
             <dependency>
@@ -693,7 +674,7 @@
             <dependency>
                 <groupId>com.sun.mail</groupId>
                 <artifactId>jakarta.mail</artifactId>
-                <version>2.0.1</version>
+                <version>2.0.2</version>
             </dependency>
             <!-- com.tugalsan.java.api.console.jdk -->
             <!-- <dependency>
@@ -860,6 +841,7 @@
                         <includes> 
                             <include>**/*.class</include> 
                             <include>**/*.java</include> 
+                            <include>**/*.js</include> 
                             <include>**/*.gwt.xml</include> 
                         </includes> 
                     </configuration> 

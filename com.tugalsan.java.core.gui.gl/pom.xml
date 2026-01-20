@@ -46,77 +46,21 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.java.core.cast</artifactId>
-            <!--<exclusions>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.jsinterop</groupId>
-                    <artifactId>base</artifactId>                
-                </exclusion>
-            </exclusions>-->
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.java.core.shape</artifactId>
-             <!--<exclusions>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.jsinterop</groupId>
-                    <artifactId>base</artifactId>                
-                </exclusion>
-            </exclusions>-->
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.java.core.log</artifactId>
-             <!--<exclusions>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.jsinterop</groupId>
-                    <artifactId>base</artifactId>                
-                </exclusion>
-            </exclusions>-->
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.java.core.list</artifactId>
-             <!--<exclusions>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-user</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.jsinterop</groupId>
-                    <artifactId>base</artifactId>                
-                </exclusion>
-            </exclusions>-->
             <version>${project.version}</version>
         </dependency>
     </dependencies>

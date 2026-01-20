@@ -2,7 +2,7 @@ package com.tugalsan.java.core.file.pdf.openpdf.server;
 
 import module java.desktop;
 import module com.github.librepdf.openpdf;
-import com.lowagie.text.Font;
+import org.openpdf.text.Font;
 import java.nio.file.*;
 
 public class TS_FilePdfOpenPdfUtilsFont {

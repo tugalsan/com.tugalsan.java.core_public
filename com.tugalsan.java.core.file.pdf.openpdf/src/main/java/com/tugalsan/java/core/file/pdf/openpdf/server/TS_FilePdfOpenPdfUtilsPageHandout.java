@@ -3,7 +3,7 @@ package com.tugalsan.java.core.file.pdf.openpdf.server;
 import module com.tugalsan.java.core.function;
 import module com.tugalsan.java.core.log;
 import module com.github.librepdf.openpdf;
-import com.lowagie.text.PageSize;
+import org.openpdf.text.PageSize;
 import java.io.*;
 
 public class TS_FilePdfOpenPdfUtilsPageHandout {

@@ -8,7 +8,7 @@ public class TS_FilePdfOpenPdfUtilsVersion {
 
     }
 
-    public static char isVersion(PdfReader reader) {
+    public static String isVersion(PdfReader reader) {
         return reader.getPdfVersion();
     }
 }

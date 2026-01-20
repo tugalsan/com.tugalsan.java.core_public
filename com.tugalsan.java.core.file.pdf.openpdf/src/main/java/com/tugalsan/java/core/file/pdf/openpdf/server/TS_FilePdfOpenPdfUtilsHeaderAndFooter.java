@@ -1,7 +1,7 @@
 package com.tugalsan.java.core.file.pdf.openpdf.server;
 
 import module com.github.librepdf.openpdf;
-import com.lowagie.text.PageSize;
+import org.openpdf.text.PageSize;
 import java.io.*;
 
 public class TS_FilePdfOpenPdfUtilsHeaderAndFooter extends PdfPageEventHelper {
@@ -31,7 +31,7 @@ public class TS_FilePdfOpenPdfUtilsHeaderAndFooter extends PdfPageEventHelper {
         cEmpty.setBorder(Rectangle.NO_BORDER);
 
         table.addCell(cEmpty);
-        var pTitle = new Paragraph("Header", new Font(Font.COURIER, 20, Font.BOLD));
+        var pTitle = new Paragraph("Header", new org.openpdf.text.Font(org.openpdf.text.Font.COURIER, 20, org.openpdf.text.Font.BOLD));
         var cTitle = new PdfPCell(pTitle);
         cTitle.setPaddingBottom(10);
         cTitle.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -39,7 +39,7 @@ public class TS_FilePdfOpenPdfUtilsHeaderAndFooter extends PdfPageEventHelper {
         table.addCell(cTitle);
         table.addCell(cEmpty);
 
-        var cellFont = new Font(Font.HELVETICA, 8);
+        var cellFont = new org.openpdf.text.Font(org.openpdf.text.Font.HELVETICA, 8);
         table.addCell(new Paragraph("Phone Number: 888-999-0000", cellFont));
         table.addCell(new Paragraph("Address : 333, Manhattan, New York", cellFont));
         table.addCell(new Paragraph("Website : http://grogu-yoda.com", cellFont));
@@ -55,14 +55,14 @@ public class TS_FilePdfOpenPdfUtilsHeaderAndFooter extends PdfPageEventHelper {
         table.getDefaultCell().setPaddingBottom(5);
         table.getDefaultCell().setBorder(Rectangle.TOP);
 
-        var pTitle = new Paragraph("Footer", new Font(Font.HELVETICA, 10));
+        var pTitle = new Paragraph("Footer", new org.openpdf.text.Font(org.openpdf.text.Font.HELVETICA, 10));
         var cTitle = new PdfPCell(pTitle);
         cTitle.setPaddingTop(4);
         cTitle.setHorizontalAlignment(Element.ALIGN_LEFT);
         cTitle.setBorder(Rectangle.TOP);
         table.addCell(cTitle);
 
-        var pPageNumber = new Paragraph("Page " + document.getPageNumber(), new Font(Font.HELVETICA, 10));
+        var pPageNumber = new Paragraph("Page " + document.getPageNumber(), new org.openpdf.text.Font(org.openpdf.text.Font.HELVETICA, 10));
         var cPageNumber = new PdfPCell(pPageNumber);
         cPageNumber.setPaddingTop(4);
         cPageNumber.setHorizontalAlignment(Element.ALIGN_RIGHT);

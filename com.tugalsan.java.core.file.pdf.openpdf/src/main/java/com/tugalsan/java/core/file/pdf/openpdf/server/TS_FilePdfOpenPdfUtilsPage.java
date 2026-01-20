@@ -2,7 +2,7 @@ package com.tugalsan.java.core.file.pdf.openpdf.server;
 
 import module com.github.librepdf.openpdf;
 import module com.tugalsan.java.core.union;
-import com.lowagie.text.PageSize;
+import org.openpdf.text.PageSize;
 import java.nio.file.*;
 
 public class TS_FilePdfOpenPdfUtilsPage {

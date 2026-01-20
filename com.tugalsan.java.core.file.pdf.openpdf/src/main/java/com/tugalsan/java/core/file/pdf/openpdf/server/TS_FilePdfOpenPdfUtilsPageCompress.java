@@ -59,7 +59,7 @@ public class TS_FilePdfOpenPdfUtilsPageCompress {
     public static void compress(Path pdfSrcFile, Path pdfDstFile) {
         TS_FilePdfOpenPdfUtilsDocument.run_doc_with_reader(pdfSrcFile, (srcDoc, pdfReader) -> {
             TGS_FuncMTCUtils.run(() -> {
-                try (var zos = new FileOutputStream(pdfDstFile.toFile()); var pdfStamper = new PdfStamper(pdfReader, zos, '5');) {
+                try (var zos = new FileOutputStream(pdfDstFile.toFile()); var pdfStamper = new PdfStamper(pdfReader, zos, "5");) {
                     pdfStamper.getWriter().setCompressionLevel(9);
                     var count = pdfReader.getNumberOfPages();
                     IntStream.rangeClosed(1, count).forEachOrdered(p -> {
