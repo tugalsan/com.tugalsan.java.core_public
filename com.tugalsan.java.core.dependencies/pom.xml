@@ -108,7 +108,7 @@
             <dependency>
                 <groupId>net.sourceforge.tess4j</groupId>
                 <artifactId>tess4j</artifactId>
-                <version>5.17.0</version>
+                <version>5.18.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.math -->
             <dependency>
@@ -143,17 +143,17 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-annotations</artifactId>
-                <version>11.0.26</version>
+                <version>12.1.5</version><!-- 11.0.26 was working -->
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-server</artifactId>
-                <version>11.0.26</version>
+                <version>12.1.5</version><!-- 11.0.26 was working -->
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-servlets</artifactId>
-                <version>11.0.26</version>
+                <version>11.0.26</version><!-- 11.0.26 was working -->
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http2</groupId>
@@ -168,12 +168,12 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-alpn-server</artifactId>
-                <version>12.0.31</version>
+                <version>12.1.5</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-client</artifactId>
-                <version>12.0.31</version>
+                <version>12.1.5</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty.http2</groupId>
@@ -338,6 +338,11 @@
                 <artifactId>commons-net</artifactId>
                 <version>3.12.0</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.jsinterop</groupId>
+                <artifactId>jsinterop-annotations</artifactId>
+                <version>2.1.0</version>
+            </dependency>
             <!-- com.tugalsan.java.api.file.zip7 -->
             <dependency>
                 <groupId>net.sf.sevenzipjbinding</groupId>
@@ -387,7 +392,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>33.4.8-jre</version>
+                <version>33.5.0-jre</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.pdf.pdfbox3 -->
             <dependency>
@@ -398,7 +403,7 @@
             <dependency>
                 <groupId>com.github.dhorions</groupId>
                 <artifactId>boxable</artifactId>
-                <version>1.7.0</version>
+                <version>1.8.1</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.pdfbox</groupId>
@@ -570,17 +575,17 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <version>2.20.1</version>
+                <version>2.21.0</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
-                <version>2.20</version>
+                <version>2.21</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.20.1</version>
+                <version>2.21.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.img.code -->
             <dependency>
@@ -608,7 +613,7 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
-                <version>4.39.0</version>
+                <version>4.40.0</version>
             </dependency>
             <!-- com.tugalsan.java.api.file.html -->
             <dependency>
@@ -625,17 +630,17 @@
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
-                <version>5.5.1</version><!-- working 5.4.1--><!-- TODO UPDATE -->
+                <version>5.5.1</version><!-- working 5.4.1-->
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
-                <version>5.5.1</version><!-- same with poi--><!-- TODO UPDATE -->
+                <version>5.5.1</version><!-- same with poi-->
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-scratchpad</artifactId>
-                <version>5.5.1</version><!-- same with poi--><!-- TODO UPDATE -->
+                <version>5.5.1</version><!-- same with poi-->
             </dependency>
             <!-- com.tugalsan.java.api.file -->
             <dependency><!-- FOR CHECKSUM -->
@@ -646,7 +651,7 @@
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>2.3.1</version>
+                <version>4.0.62.3.1</version><!-- 2.3.1 was working -->
                 <!--<scope>runtime</scope>-->
             </dependency>
             <!-- com.tugalsan.java.api.email -->
