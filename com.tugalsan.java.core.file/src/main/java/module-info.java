@@ -1,5 +1,6 @@
 module com.tugalsan.java.core.file {
     requires java.xml.bind;
+    requires org.apache.commons.text;
     requires com.tugalsan.java.core.list;    
     requires com.tugalsan.java.core.union;
     requires com.tugalsan.java.core.function;
