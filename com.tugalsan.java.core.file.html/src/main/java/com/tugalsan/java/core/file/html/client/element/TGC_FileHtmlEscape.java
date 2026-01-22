@@ -7,6 +7,6 @@ public class TGC_FileHtmlEscape implements TGS_FuncMTU_OutTyped_In1<String, Char
 
     @Override
     public String call(CharSequence unsafeHtmlText) {
-        return TGC_FileHtmlUtils.escape(unsafeHtmlText);
+        return TGC_FileHtmlUtils.toSafeHtml(unsafeHtmlText);
     }
 }

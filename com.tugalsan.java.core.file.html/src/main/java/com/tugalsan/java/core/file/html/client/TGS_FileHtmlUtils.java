@@ -1,7 +1,8 @@
 package com.tugalsan.java.core.file.html.client;
 
-import com.tugalsan.java.core.function.client.maythrowexceptions.unchecked.TGS_FuncMTUEffectivelyFinal;
-import com.tugalsan.java.core.file.common.client.TGS_FileCommonFavIcon;
+import com.tugalsan.java.core.function.client.maythrowexceptions.unchecked.*;
+import com.tugalsan.java.core.file.common.client.*;
+import com.tugalsan.java.core.file.client.html.*;
 import com.tugalsan.java.core.string.client.*;
 import com.tugalsan.java.core.url.client.TGS_Url;
 import com.tugalsan.java.core.url.client.parser.TGS_UrlParser;
@@ -10,6 +11,14 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class TGS_FileHtmlUtils {
+
+    private TGS_FileHtmlUtils() {
+
+    }
+
+    public static String toReadableText(CharSequence html) {
+        return TGS_FileHtmlUtilsDep.toReadableText(html);
+    }
 
     @Deprecated
     public static String wrapInIFrame(List<String> htmlLines, CharSequence iframeId) {

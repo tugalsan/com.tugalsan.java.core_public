@@ -1,9 +1,9 @@
 package com.tugalsan.java.core.file.client;
 
+import com.tugalsan.java.core.file.client.html.TGS_FileHtmlUtilsDep;
 import com.tugalsan.java.core.list.client.*;
 import com.tugalsan.java.core.tuple.client.*;
 import java.util.*;
-import org.apache.commons.text.StringEscapeUtils;
 
 public class TGS_FileUtilsTur {
 
@@ -16,7 +16,7 @@ public class TGS_FileUtilsTur {
     }
 
     public static String toSafe(CharSequence fileName, char safeDefaultChar) {
-        var fileNameStr = StringEscapeUtils.unescapeHtml4(fileName.toString());
+        var fileNameStr = TGS_FileHtmlUtilsDep.toReadableText(fileName.toString());
         for (var i = 0; i < SAFE_PAIRS().size(); i++) {
             if (fileNameStr.indexOf(SAFE_PAIRS().get(i).value0) != -1) {
                 fileNameStr = fileNameStr.replace(SAFE_PAIRS().get(i).value0, SAFE_PAIRS().get(i).value1);
