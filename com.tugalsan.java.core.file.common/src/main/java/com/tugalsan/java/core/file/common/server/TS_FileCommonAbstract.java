@@ -100,6 +100,10 @@ public abstract class TS_FileCommonAbstract {
 
     public abstract boolean addText(String text);
 
+    public boolean addTextPureCode(String text) {
+        return addText(text);
+    }
+
     public abstract boolean addLineBreak();
 
     public abstract boolean setFontStyle();
