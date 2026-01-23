@@ -6,6 +6,7 @@ public class TGS_FileHtmlUtilsDep {
 
     }
 
+    @Deprecated //IS IT REALLY WORKING?
     public static String toReadableText(CharSequence html) {
         if (html == null) {
             return null;
