@@ -651,7 +651,7 @@
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>4.0.62.3.1</version><!-- 2.3.1 was working -->
+                <version>4.0.6</version><!-- 2.3.1 was working -->
                 <!--<scope>runtime</scope>-->
             </dependency>
             <!-- com.tugalsan.java.api.email -->
