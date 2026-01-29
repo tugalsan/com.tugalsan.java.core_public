@@ -1,7 +1,6 @@
 module com.tugalsan.java.core.file.common {
     requires java.desktop;
     requires com.tugalsan.java.core.url;
-    requires com.tugalsan.java.core.crypto;
     requires com.tugalsan.java.core.font;
     requires com.tugalsan.java.core.function;
     requires com.tugalsan.java.core.string;

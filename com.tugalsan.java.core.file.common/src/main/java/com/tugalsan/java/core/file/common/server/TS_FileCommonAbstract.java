@@ -102,10 +102,6 @@ public abstract class TS_FileCommonAbstract {
 
     public abstract boolean addText(String text);
 
-    public boolean addText64(String text) {
-        return addText(TGS_CryptUtils.encrypt64(text));
-    }
-
     public abstract boolean addLineBreak();
 
     public abstract boolean setFontStyle();
