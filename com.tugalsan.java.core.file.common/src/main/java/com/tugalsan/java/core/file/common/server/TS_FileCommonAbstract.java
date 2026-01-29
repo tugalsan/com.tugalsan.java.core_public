@@ -1,5 +1,7 @@
 package com.tugalsan.java.core.file.common.server;
 
+import com.tugalsan.java.core.crypto.client.TGS_CryptUtils;
+
 import module com.tugalsan.java.core.url;
 import module java.desktop;
 import java.nio.file.*;
@@ -100,8 +102,8 @@ public abstract class TS_FileCommonAbstract {
 
     public abstract boolean addText(String text);
 
-    public boolean addTextPureCode(String text) {
-        return addText(text);
+    public boolean addText64(String text) {
+        return addText(TGS_CryptUtils.encrypt64(text));
     }
 
     public abstract boolean addLineBreak();

@@ -462,7 +462,7 @@ public class TS_FileHtml extends TS_FileCommonAbstract {
     }
 
     @Override
-    public boolean addTextPureCode(String text) {
+    public boolean addText64(String text) {
         return addText(text, null);
     }
 
