@@ -458,15 +458,6 @@ public class TS_FileHtml extends TS_FileCommonAbstract {
 
     @Override
     public boolean addText(String text) {
-        return addText(text, new TS_FileHtmlEscape());
-    }
-
-    @Override
-    public boolean addText64(String text) {
-        return addText(text, null);
-    }
-
-    public boolean addText(String text, TS_FileHtmlEscape escape) {
         if (isClosed()) {
             return true;
         }
@@ -474,13 +465,14 @@ public class TS_FileHtml extends TS_FileCommonAbstract {
             d.ce("addText.ERROR: MIFWeb.addText -> why parag not exists!");
             return false;
         }
+        var escape = new TS_FileHtmlEscape();
         var lines = TGS_StringUtils.jre().toList(text, "\n");
         IntStream.range(0, lines.size()).forEachOrdered(i -> {
             var line = lines.get(i);
             if (!line.isEmpty()) {
                 if (!TGS_StringDouble.may(text)) {
                     var span = new TGS_FileHtmlSpan(escape, "TK_POJOHTMLSpan_" + TGS_FileHtmlSpan.counter, line, getFont());
-                    span.pureCode = escape == null;
+                    span.pureCode = false;
                     parag.getChilderen().add(span);
                 } else {
                     var tags = TGS_StringUtils.jre().toList_spc(line);
@@ -489,7 +481,7 @@ public class TS_FileHtml extends TS_FileCommonAbstract {
                         var dbl = TGS_StringDouble.of(text);
                         if (dbl.isExcuse()) {
                             var span = new TGS_FileHtmlSpan(escape, "TK_POJOHTMLSpan_" + TGS_FileHtmlSpan.counter, tag, getFont());
-                            span.pureCode = escape == null;
+                            span.pureCode = false;
                             parag.getChilderen().add(span);
                         } else {
                             var htmlText = TGS_StringUtils.cmn().concat(String.valueOf(dbl.value().left), "<sub>", String.valueOf(dbl.value().dim()), String.valueOf(dbl.value().right), "</sub>");
@@ -499,7 +491,7 @@ public class TS_FileHtml extends TS_FileCommonAbstract {
                         }
                         if (tags.size() - 1 != j) {
                             var span = new TGS_FileHtmlSpan(escape, "TK_POJOHTMLSpan_spc" + TGS_FileHtmlSpan.counter, " ", getFont());
-                            span.pureCode = escape == null;
+                            span.pureCode = false;
                             parag.getChilderen().add(span);
                         }
                     });

@@ -1,7 +1,5 @@
 package com.tugalsan.java.core.file.common.server;
 
-import com.tugalsan.java.core.crypto.client.TGS_CryptUtils;
-
 import module com.tugalsan.java.core.url;
 import module java.desktop;
 import java.nio.file.*;
