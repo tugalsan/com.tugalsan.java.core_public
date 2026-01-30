@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.stream.*;
 
-public class TGS_TreeBranch<A, B> extends TGS_TreeAbstract<A, B> implements Serializable {
+public class TGS_TreeBranch<A extends Serializable, B extends Serializable> extends TGS_TreeAbstract<A, B> implements Serializable {
 
     public TGS_TreeBranch() {//DTO
         this.childeren = null;
@@ -21,11 +21,11 @@ public class TGS_TreeBranch<A, B> extends TGS_TreeAbstract<A, B> implements Seri
     }
     final public List<TGS_TreeAbstract<A, B>> childeren;
 
-    public static <A, B> TGS_TreeBranch<A, B> of(A id) {
+    public static <A extends Serializable, B extends Serializable> TGS_TreeBranch<A, B> of(A id) {
         return new TGS_TreeBranch(id);
     }
 
-    public static <A, B> TGS_TreeBranch<A, B> of(A id, List<TGS_TreeAbstract<A, B>> childeren) {
+    public static <A extends Serializable, B extends Serializable> TGS_TreeBranch<A, B> of(A id, List<TGS_TreeAbstract<A, B>> childeren) {
         return new TGS_TreeBranch(id, childeren);
     }
 

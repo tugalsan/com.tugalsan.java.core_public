@@ -3,7 +3,7 @@ package com.tugalsan.java.core.tree.client;
 import java.io.Serializable;
 import java.util.stream.*;
 
-public class TGS_TreeAbstract<A, B> implements Serializable {
+public class TGS_TreeAbstract<A extends Serializable, B extends Serializable> implements Serializable {
 
     public TGS_TreeAbstract() {//DTO
     }

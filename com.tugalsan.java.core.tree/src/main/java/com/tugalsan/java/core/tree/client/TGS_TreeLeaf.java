@@ -3,7 +3,7 @@ package com.tugalsan.java.core.tree.client;
 import java.io.Serializable;
 import java.util.stream.*;
 
-public class TGS_TreeLeaf<A, B> extends TGS_TreeAbstract<A, B> implements Serializable {
+public class TGS_TreeLeaf<A extends Serializable, B extends Serializable> extends TGS_TreeAbstract<A, B> implements Serializable {
 
     public TGS_TreeLeaf() {//DTO
     }
@@ -14,7 +14,7 @@ public class TGS_TreeLeaf<A, B> extends TGS_TreeAbstract<A, B> implements Serial
     }
     public B value;
 
-    public static <A, B> TGS_TreeLeaf<A, B> of(A id, B value) {
+    public static <A extends Serializable, B extends Serializable> TGS_TreeLeaf<A, B> of(A id, B value) {
         return new TGS_TreeLeaf(id, value);
     }
 
