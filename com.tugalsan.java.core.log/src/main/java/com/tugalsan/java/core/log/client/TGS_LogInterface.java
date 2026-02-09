@@ -1,0 +1,24 @@
+package com.tugalsan.java.core.log.client;
+
+import com.tugalsan.java.core.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_OutTyped;
+
+public interface TGS_LogInterface {
+
+    /*console link*/
+    public void cl(CharSequence fucName, CharSequence text, CharSequence url);
+
+    /*console lazy info*/ 
+    public void ci(CharSequence funcName, TGS_FuncMTU_OutTyped<Object> callable);
+
+    /*console info*/ 
+    public void ci(CharSequence fucName, Object... oa);
+
+    /*console results*/
+    public void cr(CharSequence fucName, Object... oa);
+
+    /*console throwable*/
+    public void ct(CharSequence fucName, Throwable t);
+
+    /*console error*/
+    public void ce(CharSequence fucName, Object... oa);
+}

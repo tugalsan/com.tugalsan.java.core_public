@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent> 
+        <groupId>com.tugalsan.java</groupId>
+        <artifactId>com.tugalsan.java.core.parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>       
+    <artifactId>com.tugalsan.java.core.log</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- <dependency>
+            <groupId>com.google.elemental2</groupId><!- - elemental2 2022.07.05 - ->
+            <artifactId>elemental2-dom</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.jsinterop</groupId>
+                    <artifactId>jsinterop-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.jsinterop</groupId>
+                    <artifactId>base</artifactId>
+                </exclusion>
+                <!- - <exclusion> //GWT NEED IT
+                    <groupId>com.google.elemental2</groupId>
+                    <artifactId>elemental2-core</artifactId>
+                </exclusion> - ->
+                 <!- - <exclusion> //GWT NEED IT
+                    <groupId>com.google.elemental2</groupId>
+                    <artifactId>elemental2-promise</artifactId>
+                </exclusion> - ->
+            </exclusions>
+            <version>1.2.1</version><!- - 1.1.0 was working - ->
+        </dependency> -->
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.tuple</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.string</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.java.core.function</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
