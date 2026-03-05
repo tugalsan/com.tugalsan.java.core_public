@@ -148,7 +148,7 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-server</artifactId>
-                <version>12.1.5</version><!-- 11.0.26 was working -->
+                <version>12.1.6</version><!-- 11.0.26 was working -->
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
